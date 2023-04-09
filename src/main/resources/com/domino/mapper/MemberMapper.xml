@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.domino.mapper.MemberMapper">  
+	
+	<select id="loginAction" resultType="MemberVO">
+		select * from member where member_id = #{ member_id }
+	</select>
+	
+	<select id="phoneAuth" resultType="int" >
+		select count(*) from member where tel = #{ tel }
+	</select>
+	
+	<select id="memberIdChk" resultType="int" >
+		select count(*) from member where member_id = #{ member_id }
+	</select>
+	
+	<select id="memberEmailChk" resultType="int" >
+		select count(*) from member where email = #{ email }
+	</select>
+	
+	<insert id="memberInsert">
+		insert into member values( #{ member_id }, #{ name }, #{ pw }, #{ birth_type }, #{ birth }, #{ tel }, #{ email }, #{ gender }, #{ info_date }, 'regular', '0', to_char(sysdate, 'yyyy-mm-dd') )
+	</insert>
+	
+	<insert id="agreeInsert">
+		insert into agree values( #{ member_id }, #{ message }, #{ email }, #{ mail } )
+	</insert>
+	
+	<select id="memberChk" resultType="MemberVO" >
+		select * from member where tel = #{ tel }		
+	</select>
+	
+	<select id="snsChk" resultType="SnsVO" >
+		select * from member_sns where member_id = (select member_id from member where tel = #{ tel })		
+	</select>
+	
+	<!-- 카카오 제약에 의한 전화번호 대신 이메일로 임시 체크 -->
+	<select id="mEmailChk" resultType="MemberVO" >
+		select * from member where email = #{ email }		
+	</select>
+	
+	<!-- 카카오 제약에 의한 전화번호 대신 이메일로 임시 체크 -->
+	<select id="sEmailChk" resultType="SnsVO" >
+		select * from member_sns where member_id = (select member_id from member where email = #{ email })		
+	</select>
+	
+	<select id="snsLoginChk" resultType="SnsVO" >
+		select * from member_sns where member_id = #{ member_id }
+	</select>
+	
+	<insert id="snsInsert">
+		insert into member_sns values( #{ member_id }, #{ sns }, #{ sns_id } )
+	</insert>
+		
+</mapper>

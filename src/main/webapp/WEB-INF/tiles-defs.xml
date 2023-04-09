@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+<tiles-definitions>
+	
+	<!-- main 타일즈 -->
+	<definition name="main" template="/WEB-INF/views/inc/layout.jsp">
+		<put-attribute name="head" value="/WEB-INF/views/inc/head.jsp" />
+		<put-attribute name="header" value="/WEB-INF/views/inc/header.jsp" />
+		<put-attribute name="container" value="/WEB-INF/views/main.jsp" />
+		<put-attribute name="footer" value="/WEB-INF/views/inc/footer.jsp" />
+	</definition>
+	
+	<!-- 타일즈 제외 -->
+	<definition name="auth/phoneAuth" template="/WEB-INF/views/inc/empty.jsp">
+		<put-attribute name="container" value="/WEB-INF/views/auth/phoneAuth.jsp" />
+	</definition>
+	
+	<definition name="error/*" template="/WEB-INF/views/inc/empty.jsp">
+		<put-attribute name="container" value="/WEB-INF/views/error/*.jsp" />
+	</definition>
+
+	<!-- 공통 타일즈 -->
+	<definition name="*/*" template="/WEB-INF/views/inc/layout.jsp">
+		<put-attribute name="head" value="/WEB-INF/views/inc/head.jsp" />
+		<put-attribute name="header" value="/WEB-INF/views/inc/header.jsp" />
+		<put-attribute name="container" value="/WEB-INF/views/{1}/{2}.jsp" />
+		<put-attribute name="footer" value="/WEB-INF/views/inc/footer.jsp" />
+	</definition>
+   
+</tiles-definitions>
