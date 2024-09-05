@@ -44,7 +44,7 @@ public class SnsLoginController {
 	private String apiResult = null;
 	
 	@GetMapping("/snsLogin")
-	public String naverLoginPage(HttpSession session, @RequestParam String sns) {
+	public String loginPage(HttpSession session, @RequestParam String sns) {
 		
 		log.info("sns 로그인 페이지 요청");
 		
