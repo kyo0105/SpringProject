@@ -1,0 +1,50 @@
+# OS
+.DS_Store
+Thumbs.db
+ehthumbs.db
+[Dd]esktop.ini
+
+# IDE (STS/Eclipse/VSCode/IntelliJ)
+.settings/
+.classpath
+.project
+.recommenders/
+.sts4-cache/
+.springBeans
+.factorypath
+*.launch
+.vscode/
+.idea/
+*.iml
+
+# Maven
+/target/
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.next
+release.properties
+dependency-reduced-pom.xml
+# (주의) Maven Wrapper는 커밋해야 하므로 .mvn/ 은 제외하지 않음
+
+# Logs & temps
+logs/
+spring.log
+*.log
+*.tmp
+*.swp
+*.swo
+hs_err_pid*
+replay_pid*
+
+# Local env/secrets
+.env
+.env.*
+application-local.properties
+application-local.yml
+*.keystore
+*.jks
+*.p12
+*.pem
+*.crt
+*.key
